@@ -20,13 +20,14 @@
  * IN THE SOFTWARE.
 */
 #include <stdexcept>
+#include <utility>
 
 #include "pocket.hxx"
 
 
 using namespace pocket;
 
-void Fraction::reduce()
+void Fraction::reduce() const
 {
     if (_denom == 0) {
         throw std::range_error("Fraction cannot have zero denominator");
@@ -50,10 +51,17 @@ Fraction::Fraction(int a, int b) : _num(a), _denom(b)
 
 Fraction Fraction::reciprocal() const
 {
-    return Fraction(_denom, _num);
+    return {_denom, _num};
 }
 
 double Fraction::value() const
 {
-    return double(_num)/double(_denom);
+    return double(_num) / double(_denom);
 }
+
+void Fraction::invert() const
+{
+    std::swap(_num, _denom);
+    reduce();
+}
+

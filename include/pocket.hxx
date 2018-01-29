@@ -33,10 +33,10 @@ namespace pocket {
 
     class Fraction {
     private:
-        int _num;
-        int _denom;
+        mutable int _num;
+        mutable int _denom;
 
-        void reduce();
+        void reduce() const;
 
     public:
         Fraction(int a = 0, int b = 1);
@@ -52,8 +52,8 @@ namespace pocket {
         };
 
         double value() const;
-
         void invert() const;
+
         Fraction reciprocal() const;
 
         Fraction operator +(const Fraction &a);

@@ -52,3 +52,17 @@ TEST(Fraction_value, returns_double_decimal)
     const Fraction f(2, 10);
     EXPECT_EQ(f.value(), 0.2);
 }
+
+TEST(Fraction_invert, swaps_numerator_and_denominator)
+{
+    const Fraction f(13, 17);
+    f.invert();
+    EXPECT_EQ(f.num(), 17);
+    EXPECT_EQ(f.denom(), 13);
+}
+
+TEST(Fraction_invert, throws_exception_when_numerator_is_zero)
+{
+    const Fraction f(0, 17);
+    EXPECT_THROW(f.invert(), std::range_error);
+}
