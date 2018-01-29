@@ -2,7 +2,7 @@ include_directories("${PROJECT_SOURCE_DIR}")
 
 set(PROJECT_TEST_NAME ${PROJECT_NAME}-test)
 # First Simple Google Test
-add_executable(${PROJECT_TEST_NAME} main.cpp util_test.cpp)
+add_executable(${PROJECT_TEST_NAME} main.cpp util_test.cpp Fraction_test.cpp)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
