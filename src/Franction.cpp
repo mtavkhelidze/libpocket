@@ -1,5 +1,5 @@
 /**
- * Copyright (c) $today.year Misha Tavkhelidze <misha.tavkhelidze@gmail.com>
+ * Copyright (c) 2018 Misha Tavkhelidze <misha.tavkhelidze@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -23,16 +23,17 @@
 
 #include "pocket.hxx"
 
+
 using namespace pocket;
 
 void Fraction::reduce()
 {
-    if(_denom == 0) {
+    if (_denom == 0) {
         throw std::range_error("Fraction cannot have zero denominator");
-    } else if(_num == 0) {
+    } else if (_num == 0) {
         _denom = 1;
     } else {
-        if(_denom < 0) {
+        if (_denom < 0) {
             _num = -_num;
             _denom = -_denom;
         }
@@ -51,3 +52,4 @@ Fraction Fraction::reciprocal() const
 {
     return Fraction(_denom, _num);
 }
+

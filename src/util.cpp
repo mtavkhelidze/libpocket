@@ -1,5 +1,5 @@
 /**
- * Copyright (c) $today.year Misha Tavkhelidze <misha.tavkhelidze@gmail.com>
+ * Copyright (c) 2018 Misha Tavkhelidze <misha.tavkhelidze@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -29,7 +29,7 @@ int pocket::util::gcd(int a, int b)
 {
     int n = abs(a);
     int ret = abs(b);
-    while( n != 0) {
+    while (n != 0) {
         int tmp = n;
         n = ret % n;
         ret = tmp;
