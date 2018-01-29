@@ -46,3 +46,8 @@ Fraction::Fraction(int a, int b) : _num(a), _denom(b)
 {
     reduce();
 }
+
+Fraction Fraction::reciprocal() const
+{
+    return Fraction(_denom, _num);
+}

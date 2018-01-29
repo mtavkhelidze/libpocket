@@ -21,9 +21,9 @@
 */
 
 #include <gtest/gtest.h>
-#include <stdexcept>
 
 #include "pocket.hxx"
+
 
 using namespace pocket;
 
@@ -37,4 +37,12 @@ TEST(Fraction_constructor, reduces_fraction_to_simplest_terms)
 TEST(Fraction_constructor, trows_range_error_if_denominator_is_zero)
 {
     EXPECT_THROW(new Fraction(10, 0), std::range_error);
+}
+
+TEST(Fraction_reciprocal, returns_b_by_a)
+{
+    const Fraction f(3, 5);
+    const Fraction r = f.reciprocal();
+    EXPECT_EQ(r.num(), f.denom());
+    EXPECT_EQ(r.denom(), f.num());
 }
