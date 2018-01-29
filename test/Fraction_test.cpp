@@ -66,3 +66,11 @@ TEST(Fraction_invert, throws_exception_when_numerator_is_zero)
     const Fraction f(0, 17);
     EXPECT_THROW(f.invert(), std::range_error);
 }
+
+TEST(Fraction_unary_plus, returns_reduced_sum)
+{
+    Fraction f1(7, 5), f2(7, 5);
+    f1 += f2;
+    EXPECT_EQ(f1.num(), 14);
+    EXPECT_EQ(f1.denom(), 5);
+}

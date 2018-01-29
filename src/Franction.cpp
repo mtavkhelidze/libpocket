@@ -49,9 +49,10 @@ Fraction::Fraction(int a, int b) : _num(a), _denom(b)
     reduce();
 }
 
-Fraction Fraction::reciprocal() const
+void Fraction::invert() const
 {
-    return {_denom, _num};
+    std::swap(_num, _denom);
+    reduce();
 }
 
 double Fraction::value() const
@@ -59,9 +60,15 @@ double Fraction::value() const
     return double(_num) / double(_denom);
 }
 
-void Fraction::invert() const
+Fraction Fraction::reciprocal() const
 {
-    std::swap(_num, _denom);
-    reduce();
+    return { _denom, _num };
 }
 
+Fraction &Fraction::operator +=(const Fraction &other)
+{
+    _num = _num * other._denom + _denom * other._num;
+    _denom *= other._denom;
+    reduce();
+    return *this;
+}

@@ -56,13 +56,13 @@ namespace pocket {
 
         Fraction reciprocal() const;
 
+        Fraction &operator +=(const Fraction &other);
+        Fraction &operator -=(const Fraction &other);
+        Fraction &operator *=(const Fraction &other);
+        Fraction &operator /=(const Fraction &other);
+
         Fraction operator +(const Fraction &a);
         Fraction operator -(const Fraction &a);
-
-        Fraction &operator +=(const Fraction &a);
-        Fraction &operator -=(const Fraction &a);
-        Fraction &operator *=(const Fraction &a);
-        Fraction &operator /=(const Fraction &a);
 
     };
 
