@@ -53,3 +53,7 @@ Fraction Fraction::reciprocal() const
     return Fraction(_denom, _num);
 }
 
+double Fraction::value() const
+{
+    return double(_num)/double(_denom);
+}

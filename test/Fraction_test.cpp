@@ -46,3 +46,9 @@ TEST(Fraction_reciprocal, returns_b_by_a)
     EXPECT_EQ(r.num(), f.denom());
     EXPECT_EQ(r.denom(), f.num());
 }
+
+TEST(Fraction_value, returns_double_decimal)
+{
+    const Fraction f(2, 10);
+    EXPECT_EQ(f.value(), 0.2);
+}
