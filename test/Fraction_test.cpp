@@ -90,3 +90,11 @@ TEST(Fraction_minus_equals, returns_reduced_difference)
     EXPECT_EQ(f1.num(), 3);
     EXPECT_EQ(f1.denom(), 20);
 }
+
+TEST(Fraction_devide_equals, returns_reduced_division)
+{
+    Fraction f1(1, 4), f2(1, 10);
+    f1 /= f2;
+    EXPECT_EQ(f1.num(), 5);
+    EXPECT_EQ(f1.denom(), 2);
+}
