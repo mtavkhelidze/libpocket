@@ -30,8 +30,8 @@ using namespace pocket;
 TEST(Fraction_constructor, reduces_fraction_to_simplest_terms)
 {
     const Fraction f(20, 100);
-    EXPECT_EQ(f.num(), 1);
-    EXPECT_EQ(f.denom(), 5);
+    EXPECT_EQ(f.p(), 1);
+    EXPECT_EQ(f.q(), 5);
 }
 
 TEST(Fraction_constructor, trows_range_error_if_denominator_is_zero)
@@ -43,8 +43,8 @@ TEST(Fraction_reciprocal, returns_b_by_a)
 {
     const Fraction f(3, 5);
     const Fraction r = f.reciprocal();
-    EXPECT_EQ(r.num(), f.denom());
-    EXPECT_EQ(r.denom(), f.num());
+    EXPECT_EQ(r.p(), f.q());
+    EXPECT_EQ(r.q(), f.p());
 }
 
 TEST(Fraction_value, returns_double_decimal)
@@ -57,8 +57,8 @@ TEST(Fraction_invert, swaps_numerator_and_denominator)
 {
     const Fraction f(13, 17);
     f.invert();
-    EXPECT_EQ(f.num(), 17);
-    EXPECT_EQ(f.denom(), 13);
+    EXPECT_EQ(f.p(), 17);
+    EXPECT_EQ(f.q(), 13);
 }
 
 TEST(Fraction_invert, throws_exception_when_numerator_is_zero)
@@ -71,30 +71,30 @@ TEST(Fraction_plus_equals, returns_reduced_sum)
 {
     Fraction f1(7, 5), f2(7, 5);
     f1 += f2;
-    EXPECT_EQ(f1.num(), 14);
-    EXPECT_EQ(f1.denom(), 5);
+    EXPECT_EQ(f1.p(), 14);
+    EXPECT_EQ(f1.q(), 5);
 }
 
 TEST(Fraction_mult_equals, returns_reduced_multiple)
 {
     Fraction f1(3, 4), f2(2, 5);
     f1 *= f2;
-    EXPECT_EQ(f1.num(), 3);
-    EXPECT_EQ(f1.denom(), 10);
+    EXPECT_EQ(f1.p(), 3);
+    EXPECT_EQ(f1.q(), 10);
 }
 
 TEST(Fraction_minus_equals, returns_reduced_difference)
 {
     Fraction f1(1, 4), f2(1, 10);
     f1 -= f2;
-    EXPECT_EQ(f1.num(), 3);
-    EXPECT_EQ(f1.denom(), 20);
+    EXPECT_EQ(f1.p(), 3);
+    EXPECT_EQ(f1.q(), 20);
 }
 
 TEST(Fraction_devide_equals, returns_reduced_division)
 {
     Fraction f1(1, 4), f2(1, 10);
     f1 /= f2;
-    EXPECT_EQ(f1.num(), 5);
-    EXPECT_EQ(f1.denom(), 2);
+    EXPECT_EQ(f1.p(), 5);
+    EXPECT_EQ(f1.q(), 2);
 }

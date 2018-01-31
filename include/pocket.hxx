@@ -33,22 +33,22 @@ namespace pocket {
 
     class Fraction {
     private:
-        mutable int _num;
-        mutable int _denom;
+        mutable int _p;
+        mutable int _q;
 
         void reduce() const;
 
     public:
         Fraction(int a = 0, int b = 1);
 
-        int num() const
+        int p() const
         {
-            return _num;
+            return _p;
         };
 
-        int denom() const
+        int q() const
         {
-            return _denom;
+            return _q;
         };
 
         double value() const;
