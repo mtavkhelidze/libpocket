@@ -81,3 +81,11 @@ Fraction &Fraction::operator *=(const Fraction &other)
     return *this;
 }
 
+Fraction &Fraction::operator -=(const Fraction &other)
+{
+    _num = _num * other.denom() - other.num() * _denom;
+    _denom = _denom * other.denom();
+    reduce();
+    return *this;
+}
+
