@@ -50,11 +50,11 @@ TEST(Fraction_reciprocal, returns_b_by_a)
     EXPECT_EQ(r.q(), f.p());
 }
 
-TEST(Fraction_value, returns_double_decimal)
+TEST(Fraction_operator_double, converts_to_double_decimal)
 {
     const Fraction f(2, 10);
 
-    EXPECT_EQ(f.value(), 0.2);
+    EXPECT_EQ((double)f, 0.2);
 }
 
 TEST(Fraction_invert, swaps_numerator_and_denominator)

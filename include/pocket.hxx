@@ -51,7 +51,7 @@ namespace pocket {
             return _q;
         };
 
-        double value() const;
+        operator double() const;
         void invert();
 
         Fraction reciprocal() const;

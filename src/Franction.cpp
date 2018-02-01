@@ -55,7 +55,7 @@ namespace pocket {
         reduce();
     }
 
-    double Fraction::value() const
+    Fraction::operator double() const
     {
         return double(_p) / double(_q);
     }
