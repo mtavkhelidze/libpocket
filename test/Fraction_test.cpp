@@ -59,7 +59,7 @@ TEST(Fraction_value, returns_double_decimal)
 
 TEST(Fraction_invert, swaps_numerator_and_denominator)
 {
-    const Fraction f(13, 17);
+    Fraction f(13, 17);
 
     f.invert();
 
@@ -69,7 +69,7 @@ TEST(Fraction_invert, swaps_numerator_and_denominator)
 
 TEST(Fraction_invert, throws_exception_when_numerator_is_zero)
 {
-    const Fraction f(0, 17);
+    Fraction f(0, 17);
 
     EXPECT_THROW(f.invert(), std::range_error);
 }
@@ -132,4 +132,16 @@ TEST(Fraction_divide_and_or_assignment, returns_reduced_division)
     f1 /= f2;
     EXPECT_EQ(f1.p(), 5);
     EXPECT_EQ(f1.q(), 2);
+}
+
+TEST(Fraction_logical_operators, return_correct_values)
+{
+    Fraction a(1, 2), b(1, 3);
+
+    EXPECT_TRUE(a == a);
+    EXPECT_TRUE(a != b);
+    EXPECT_TRUE(b < a);
+    EXPECT_TRUE(b <= a);
+    EXPECT_TRUE(a > b);
+    EXPECT_TRUE(a >= b);
 }

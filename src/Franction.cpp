@@ -25,98 +25,129 @@
 #include "pocket.hxx"
 
 
-using namespace pocket;
+namespace pocket {
 
-void Fraction::reduce() const
-{
-    if (_q == 0) {
-        throw std::range_error("Fraction cannot have zero denominator");
-    } else if (_p == 0) {
-        _q = 1;
-    } else {
-        if (_q < 0) {
-            _p = -_p;
-            _q = -_q;
+    void Fraction::reduce()
+    {
+        if (_q == 0) {
+            throw std::range_error("Fraction cannot have zero denominator");
+        } else if (_p == 0) {
+            _q = 1;
+        } else {
+            if (_q < 0) {
+                _p = -_p;
+                _q = -_q;
+            }
+            int gcd = util::gcd(_p, _q);
+            _p /= gcd;
+            _q /= gcd;
         }
-        int gcd = util::gcd(_p, _q);
-        _p /= gcd;
-        _q /= gcd;
     }
-}
 
-Fraction::Fraction(int a, int b) : _p(a), _q(b)
-{
-    reduce();
-}
+    Fraction::Fraction(int a, int b) : _p(a), _q(b)
+    {
+        reduce();
+    }
 
-void Fraction::invert() const
-{
-    std::swap(_p, _q);
-    reduce();
-}
+    void Fraction::invert()
+    {
+        std::swap(_p, _q);
+        reduce();
+    }
 
-double Fraction::value() const
-{
-    return double(_p) / double(_q);
-}
+    double Fraction::value() const
+    {
+        return double(_p) / double(_q);
+    }
 
-Fraction Fraction::reciprocal() const
-{
-    return { _q, _p };
-}
+    Fraction Fraction::reciprocal() const
+    {
+        return { _q, _p };
+    }
 
-Fraction &Fraction::operator +=(const Fraction &other)
-{
-    _p = _p * other._q + _q * other._p;
-    _q = _q * other._q;
-    reduce();
-    return *this;
-}
+    Fraction &Fraction::operator +=(const Fraction &other)
+    {
+        _p = _p * other._q + _q * other._p;
+        _q = _q * other._q;
+        reduce();
+        return *this;
+    }
 
-Fraction &Fraction::operator *=(const Fraction &other)
-{
-    _p = _p * other.p();
-    _q = _q * other.q();
-    reduce();
-    return *this;
-}
+    Fraction &Fraction::operator *=(const Fraction &other)
+    {
+        _p = _p * other.p();
+        _q = _q * other.q();
+        reduce();
+        return *this;
+    }
 
-Fraction &Fraction::operator -=(const Fraction &other)
-{
-    _p = _p * other.q() - other.p() * _q;
-    _q = _q * other.q();
-    reduce();
-    return *this;
-}
+    Fraction &Fraction::operator -=(const Fraction &other)
+    {
+        _p = _p * other.q() - other.p() * _q;
+        _q = _q * other.q();
+        reduce();
+        return *this;
+    }
 
-Fraction &Fraction::operator /=(const Fraction &other)
-{
-    _p = _p * other.q();
-    _q = _q * other.p();
-    reduce();
-    return *this;
-}
+    Fraction &Fraction::operator /=(const Fraction &other)
+    {
+        _p = _p * other.q();
+        _q = _q * other.p();
+        reduce();
+        return *this;
+    }
 
-Fraction Fraction::operator +(const Fraction &other)
-{
-    Fraction r = *this;
-    return r += other;
-}
+    Fraction operator +(const Fraction &a, const Fraction &b)
+    {
+        Fraction r = a;
+        return r += b;
+    }
 
-Fraction Fraction::operator -(const Fraction &other)
-{
-    Fraction r = *this;
-    return r -= other;
-}
+    Fraction operator -(const Fraction &a, const Fraction &b)
+    {
+        Fraction r = a;
+        return r -= b;
+    }
 
-Fraction Fraction::operator *(const Fraction &other)
-{
-    Fraction r = *this;
-    return r *= other;
-}
+    Fraction operator *(const Fraction &a, const Fraction &b)
+    {
+        Fraction r = a;
+        return r *= b;
+    }
 
-Fraction Fraction::operator /(const Fraction &other)
-{
-    Fraction r = *this;
-    return r /= other;
+    Fraction operator /(const Fraction &a, const Fraction &b)
+    {
+        Fraction r = a;
+        return r /= b;
+    }
+
+    bool operator ==(const Fraction &a, const Fraction &b)
+    {
+        return (a.p() == b.p() and a.q() == b.q());
+    }
+
+    bool operator !=(const Fraction &a, const Fraction &b)
+    {
+        return not(a == b);
+    }
+
+    bool operator <(const Fraction &a, const Fraction &b)
+    {
+        return (a.p() * b.q() < b.p() * a.q());
+    }
+
+    bool operator <=(const Fraction &a, const Fraction &b)
+    {
+        return (a < b or a == b);
+    }
+
+    bool operator >(const Fraction &a, const Fraction &b)
+    {
+        return b < a;
+    }
+
+    bool operator >=(const Fraction &a, const Fraction &b)
+    {
+        return not(a < b);
+    }
 }

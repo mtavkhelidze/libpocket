@@ -36,7 +36,7 @@ namespace pocket {
         mutable int _p;
         mutable int _q;
 
-        void reduce() const;
+        void reduce();
 
     public:
         Fraction(int a = 0, int b = 1);
@@ -52,31 +52,29 @@ namespace pocket {
         };
 
         double value() const;
-        void invert() const;
+        void invert();
 
         Fraction reciprocal() const;
 
         Fraction &operator +=(const Fraction &other);
         Fraction &operator *=(const Fraction &other);
+
         Fraction &operator -=(const Fraction &other);
         Fraction &operator /=(const Fraction &other);
-
-        Fraction operator +(const Fraction &a);
-        Fraction operator -(const Fraction &a);
-
-        Fraction operator *(const Fraction &other);
-        Fraction operator /(const Fraction &other);
-
-        bool operator ==(const Fraction &other);
-        bool operator !=(const Fraction &other);
-        bool operator <(const Fraction &other);
-        bool operator <=(const Fraction &other);
-        bool operator >(const Fraction &other);
-        bool operator >=(const Fraction &other);
-
-        friend std::ostream& operator << (std::ostream& out, const Fraction& f);
     };
 
+    Fraction operator +(const Fraction &a, const Fraction &b);
+    Fraction operator -(const Fraction &a, const Fraction &b);
+
+    Fraction operator *(const Fraction &a, const Fraction &b);
+    Fraction operator /(const Fraction &a, const Fraction &b);
+
+    bool operator ==(const Fraction &a, const Fraction &b);
+    bool operator !=(const Fraction &a, const Fraction &b);
+    bool operator <(const Fraction &a, const Fraction &b);
+    bool operator <=(const Fraction &a, const Fraction &b);
+    bool operator >(const Fraction &a, const Fraction &b);
+    bool operator >=(const Fraction &a, const Fraction &br);
 
     std::ostream &operator <<(std::ostream &out, const Fraction &f);
 };
