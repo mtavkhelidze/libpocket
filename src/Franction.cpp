@@ -150,4 +150,9 @@ namespace pocket {
     {
         return not(a < b);
     }
+
+    std::ostream &operator <<(std::ostream &out, const Fraction &f)
+    {
+        return out << f.p() << "/" << f.q();
+    }
 }

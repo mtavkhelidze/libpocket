@@ -145,3 +145,10 @@ TEST(Fraction_logical_operators, return_correct_values)
     EXPECT_TRUE(a > b);
     EXPECT_TRUE(a >= b);
 }
+
+TEST(Fraction_ostream, returns_ostream_with_correct_representation)
+{
+    std::stringstream out;
+    out << Fraction(10, 11);
+    EXPECT_TRUE(out.str() == "10/11");
+}
