@@ -30,6 +30,7 @@ using namespace pocket;
 TEST(Fraction_constructor, reduces_fraction_to_simplest_terms)
 {
     const Fraction f(20, 100);
+
     EXPECT_EQ(f.p(), 1);
     EXPECT_EQ(f.q(), 5);
 }
@@ -42,7 +43,9 @@ TEST(Fraction_constructor, trows_range_error_if_denominator_is_zero)
 TEST(Fraction_reciprocal, returns_b_by_a)
 {
     const Fraction f(3, 5);
+
     const Fraction r = f.reciprocal();
+
     EXPECT_EQ(r.p(), f.q());
     EXPECT_EQ(r.q(), f.p());
 }
@@ -50,13 +53,16 @@ TEST(Fraction_reciprocal, returns_b_by_a)
 TEST(Fraction_value, returns_double_decimal)
 {
     const Fraction f(2, 10);
+
     EXPECT_EQ(f.value(), 0.2);
 }
 
 TEST(Fraction_invert, swaps_numerator_and_denominator)
 {
     const Fraction f(13, 17);
+
     f.invert();
+
     EXPECT_EQ(f.p(), 17);
     EXPECT_EQ(f.q(), 13);
 }
@@ -64,36 +70,65 @@ TEST(Fraction_invert, swaps_numerator_and_denominator)
 TEST(Fraction_invert, throws_exception_when_numerator_is_zero)
 {
     const Fraction f(0, 17);
+
     EXPECT_THROW(f.invert(), std::range_error);
 }
 
-TEST(Fraction_plus_equals, returns_reduced_sum)
+TEST(Fraction_plus_and_or_assignment, returns_reduced_sum)
 {
     Fraction f1(7, 5), f2(7, 5);
+
+    auto r = f1 + f2;
+
+    EXPECT_EQ(r.p(), 14);
+    EXPECT_EQ(r.q(), 5);
+
     f1 += f2;
+
     EXPECT_EQ(f1.p(), 14);
-    EXPECT_EQ(f1.q(), 5);
+    EXPECT_EQ(f2.q(), 5);
 }
 
-TEST(Fraction_mult_equals, returns_reduced_multiple)
+TEST(Fraction_minus_and_or_assignment, returns_reduced_difference)
 {
-    Fraction f1(3, 4), f2(2, 5);
-    f1 *= f2;
-    EXPECT_EQ(f1.p(), 3);
-    EXPECT_EQ(f1.q(), 10);
-}
+    Fraction f1(6, 5), f2(1, 5);
 
-TEST(Fraction_minus_equals, returns_reduced_difference)
-{
-    Fraction f1(1, 4), f2(1, 10);
+    auto r = f1 - f2;
+
+    EXPECT_EQ(r.p(), 1);
+    EXPECT_EQ(r.q(), 1);
+
     f1 -= f2;
-    EXPECT_EQ(f1.p(), 3);
-    EXPECT_EQ(f1.q(), 20);
+
+    EXPECT_EQ(f1.p(), 1);
+    EXPECT_EQ(f1.q(), 1);
+
 }
 
-TEST(Fraction_devide_equals, returns_reduced_division)
+TEST(Fraction_mult_and_or_assignment, returns_reduced_multiple)
+{
+    Fraction f1(5, 4), f2(2, 5);
+
+    auto r = f1 * f2;
+
+    EXPECT_EQ(r.p(), 1);
+    EXPECT_EQ(r.q(), 2);
+
+    f1 *= f2;
+
+    EXPECT_EQ(f1.p(), 1);
+    EXPECT_EQ(f1.q(), 2);
+}
+
+TEST(Fraction_divide_and_or_assignment, returns_reduced_division)
 {
     Fraction f1(1, 4), f2(1, 10);
+
+    auto r = f1 / f2;
+
+    EXPECT_EQ(r.p(), 5);
+    EXPECT_EQ(r.q(), 2);
+
     f1 /= f2;
     EXPECT_EQ(f1.p(), 5);
     EXPECT_EQ(f1.q(), 2);

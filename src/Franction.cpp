@@ -68,7 +68,7 @@ Fraction Fraction::reciprocal() const
 Fraction &Fraction::operator +=(const Fraction &other)
 {
     _p = _p * other._q + _q * other._p;
-    _q *= other._q;
+    _q = _q * other._q;
     reduce();
     return *this;
 }
@@ -97,3 +97,26 @@ Fraction &Fraction::operator /=(const Fraction &other)
     return *this;
 }
 
+Fraction Fraction::operator +(const Fraction &other)
+{
+    Fraction r = *this;
+    return r += other;
+}
+
+Fraction Fraction::operator -(const Fraction &other)
+{
+    Fraction r = *this;
+    return r -= other;
+}
+
+Fraction Fraction::operator *(const Fraction &other)
+{
+    Fraction r = *this;
+    return r *= other;
+}
+
+Fraction Fraction::operator /(const Fraction &other)
+{
+    Fraction r = *this;
+    return r /= other;
+}

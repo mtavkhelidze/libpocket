@@ -64,19 +64,19 @@ namespace pocket {
         Fraction operator +(const Fraction &a);
         Fraction operator -(const Fraction &a);
 
+        Fraction operator *(const Fraction &other);
+        Fraction operator /(const Fraction &other);
+
+        bool operator ==(const Fraction &other);
+        bool operator !=(const Fraction &other);
+        bool operator <(const Fraction &other);
+        bool operator <=(const Fraction &other);
+        bool operator >(const Fraction &other);
+        bool operator >=(const Fraction &other);
+
+        friend std::ostream& operator << (std::ostream& out, const Fraction& f);
     };
 
-    Fraction operator +(const Fraction &a, const Fraction &b);
-    Fraction operator -(const Fraction &a, const Fraction &b);
-    Fraction operator *(const Fraction &a, const Fraction &b);
-    Fraction operator /(const Fraction &a, const Fraction &b);
-
-    bool operator ==(const Fraction &a, const Fraction &b);
-    bool operator !=(const Fraction &a, const Fraction &b);
-    bool operator <(const Fraction &a, const Fraction &b);
-    bool operator <=(const Fraction &a, const Fraction &b);
-    bool operator >(const Fraction &a, const Fraction &b);
-    bool operator >=(const Fraction &a, const Fraction &b);
 
     std::ostream &operator <<(std::ostream &out, const Fraction &f);
 };
