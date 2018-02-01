@@ -1,8 +1,8 @@
-# libpocket — C++11 Data Structures & Algorithms Library
+# libpocket — Test-Drive Implementation of Data Structures & Algorithms in C++
 
 ## Description
 
-`libpocket` is implementation of stuff found in Lee Wittenberg's [Data
+`libpocket` is test-driven implementation of stuff found in Lee Wittenberg's [Data
 Structures and Algorithms in C++: Pocket Primer](1) (hence the name) — an
 exercise aimed at refreshing C++, CMake, TDD, and, well, data structures and
 algorithms.
